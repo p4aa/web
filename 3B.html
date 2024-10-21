@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Area Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    .container {
+      margin: 20px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .input-group {
+      margin-bottom: 10px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input {
+      width: 100%;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    #result {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Area Calculator</h1>
+    <div class="input-group">
+      <label for="shape">Choose a shape:</label>
+      <select id="shape">
+        <option value="circle">Circle</option>
+        <option value="rectangle">Rectangle</option>
+        <option value="triangle">Triangle</option>
+        <option value="square">Square</option>
+      </select>
+    </div>
+    <div class="input-group">
+      <label for="radius">Radius (for circle):</label>
+      <input type="number" id="radius">
+    </div>
+    <div class="input-group">
+      <label for="length">Length (for rectangle):</label>
+      <input type="number" id="length">
+    </div>
+    <div class="input-group">
+      <label for="width">Width (for rectangle):</label>
+      <input type="number" id="width">
+    </div>
+    <div class="input-group">
+      <label for="base">Base (for triangle):</label>
+      <input type="number" id="base">
+    </div>
+    <div class="input-group">
+      <label for="height">Height (for triangle):</label>
+      <input type="number" id="height">
+    </div>
+    <button onclick="calculateArea()">Calculate Area</button>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    function calculateArea() {
+      const shape = document.getElementById("shape").value;
+      let area;
+
+      switch (shape) {
+        case "circle":
+          const radius = parseFloat(document.getElementById("radius").value);
+          area = Math.PI * radius * radius;
+          break;
+        case "rectangle":
+          const length = parseFloat(document.getElementById("length").value);
+          const width = parseFloat(document.getElementById("width").value);
+          area = length * width;
+          break;
+        case "triangle":
+          const base = parseFloat(document.getElementById("base").value);
+          const height = parseFloat(document.getElementById("height").value);
+          area = 0.5 * base * height;
+          break;
+        case "square":
+          const side = parseFloat(document.getElementById("length").value); // Use length for square
+          area = side * side;
+          break;
+        default:
+          area = "Invalid shape";
+      }
+
+      document.getElementById("result").textContent = "Area: " + area;
+    }
+  </script>
+</body>
+</html>

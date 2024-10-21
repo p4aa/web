@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="loginApp">
+<head>
+  <title>Login</title>
+  <link rel="stylesheet" href="4A.css">
+</head>
+<body ng-controller="LoginController">
+<script>
+var app = angular.module('loginApp', []);
+
+app.controller('LoginController', function($scope) {
+  $scope.username = '';
+  $scope.password = '';
+
+  $scope.login = function() {
+    // Implement authentication logic here
+    // For example, you could check against a hardcoded user list
+    if ($scope.username === 'user' && $scope.password === 'password') {
+      alert('Login successful!');
+    } else {
+      alert('Invalid credentials');
+    }
+  };
+});
+</script>
+  <div class="login-container">
+    <h1>Login</h1>
+    <form ng-submit="login()">
+      <div class="input-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" ng-model="username">
+      </div>
+      <div class="input-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" ng-model="password">
+      </div>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</body>
+</html>
